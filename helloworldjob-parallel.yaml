@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-world-job-parallel
+spec:
+  completions: 5
+  parallelism: 2
+  template:
+    metadata:
+     name: hello-world-job-parallel
+    spec:
+      containers:
+      - name: say-hello-parallel
+        image: alpine:latest
+        command : ["echo","Hello World Parallel !"]
+      restartPolicy: Never
