@@ -1,0 +1,15 @@
+apiVersion: batch/v2alpha1
+kind: ScheduledJob
+metadata:
+  name: hello-world-cronjob
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+           - name: say-hello-cronjob
+             image: alpine:latest
+             command : ["echo","Hello World cron"]
+          restartPolicy: Never
