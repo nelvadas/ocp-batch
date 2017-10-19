@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-world-job-error 
+spec:
+  template:
+    metadata:
+     name: hello-error
+    spec:
+      containers:
+      - name: say-hello
+        image: alpine:latest
+        command : ["ls","/FakeDirectory"]
+      restartPolicy: Never
